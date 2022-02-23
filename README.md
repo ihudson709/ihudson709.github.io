@@ -25,7 +25,7 @@ No. This will only retrieve Your computer's Service Tag. In other words it will 
 
 ## Acknowledgements
 
- - [Apps' Icon created at http://www.iconsmind.com
+ - Apps' Icon created at http://www.iconsmind.com
 ## Developer's Logo
 ![Logo](https://github.com/ihudson709/ihudson709.github.io/blob/master/logo.png?raw=true)
 
