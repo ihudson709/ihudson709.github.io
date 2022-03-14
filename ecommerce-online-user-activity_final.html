@@ -17241,73 +17241,58 @@ Total number of purchases per month is 257196
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Notes:</span>
-
-<span class="n">Achieving</span> <span class="n">accuracy</span> <span class="n">of</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">50</span> <span class="n">percent</span> <span class="ow">is</span> <span class="n">improbable</span> <span class="ow">in</span> <span class="n">cases</span> <span class="n">where</span> 
-<span class="n">prediction</span> <span class="ow">is</span> <span class="n">related</span> <span class="n">to</span> <span class="n">psychology</span><span class="p">,</span> <span class="k">as</span> <span class="n">we</span> <span class="n">don</span><span class="s1">&#39;t know the user&#39;</span><span class="n">s</span> <span class="n">mindset</span> <span class="n">at</span> <span class="n">the</span> <span class="n">time</span> <span class="n">of</span> <span class="n">purchase</span><span class="o">.</span>
-<span class="n">In</span> <span class="n">some</span> <span class="n">fields</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">entirely</span> <span class="n">expected</span> <span class="n">that</span> <span class="n">an</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span> <span class="n">value</span> <span class="n">would</span> <span class="n">be</span> <span class="n">low</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="nb">any</span> 
-<span class="n">field</span> <span class="n">that</span> <span class="n">attempts</span> <span class="n">to</span> <span class="n">predict</span> <span class="n">human</span> <span class="n">behavior</span><span class="o">.</span> <span class="n">That</span> <span class="ow">is</span> <span class="n">precisely</span> <span class="n">what</span> <span class="n">we</span> <span class="n">are</span> <span class="n">doing</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">analysis</span><span class="o">.</span>
-<span class="n">Considering</span> <span class="n">this</span> <span class="mf">0.499</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">good</span> <span class="n">fit</span> <span class="n">to</span> <span class="n">the</span> <span class="n">model</span><span class="o">.</span>
-
-<span class="n">The</span> <span class="n">coefficient</span> <span class="k">for</span> <span class="n">event_type_level</span> <span class="n">shows</span> <span class="n">that</span> <span class="k">for</span> <span class="n">every</span> <span class="n">single</span> <span class="n">unit</span> <span class="n">increase</span> <span class="n">the</span> <span class="n">Y</span> <span class="n">dependant</span>
-<span class="n">variable</span> <span class="p">(</span><span class="n">purchase</span> <span class="ow">or</span> <span class="n">no</span> <span class="n">purchase</span><span class="p">)</span> <span class="n">will</span> <span class="n">increase</span> <span class="n">by</span> <span class="mi">22</span> <span class="n">units</span><span class="o">.</span>
-
-<span class="c1"># Summary</span>
-
- <span class="o">-</span> <span class="n">The</span> <span class="n">most</span> <span class="n">common</span> <span class="n">price</span> <span class="ow">is</span> <span class="n">the</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">15</span> <span class="n">Euro</span> <span class="nb">range</span><span class="o">.</span>    
- <span class="o">-</span> <span class="n">The</span> <span class="n">most</span> <span class="n">frequent</span> <span class="n">events</span> <span class="n">are</span> <span class="n">viewing</span> <span class="n">products</span> <span class="n">then</span> <span class="n">putting</span> <span class="n">products</span> <span class="n">into</span> <span class="n">the</span> <span class="n">cart</span><span class="p">,</span>  
-   <span class="n">removing</span> <span class="n">a</span> <span class="n">product</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">cart</span> <span class="ow">and</span> <span class="n">lastly</span> <span class="n">making</span> <span class="n">a</span> <span class="n">purchase</span><span class="o">.</span>     
- <span class="o">-</span> <span class="n">On</span> <span class="n">average</span> <span class="n">each</span> <span class="s1">&#39;event_type&#39;</span> <span class="n">amount</span> <span class="n">drops</span> <span class="n">down</span> <span class="n">to</span> <span class="n">about</span> <span class="n">half</span> <span class="n">the</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">the</span> <span class="n">previous</span> <span class="s1">&#39;event_type&#39;</span><span class="o">.</span>
-
-<span class="o">*</span><span class="n">Event</span> <span class="n">Type</span> <span class="n">percentages</span><span class="p">:</span><span class="o">*</span>                			
-<span class="o">|</span> <span class="n">view</span> <span class="o">|</span> <span class="mf">0.49</span> <span class="o">||</span> <span class="n">cart</span> <span class="o">|</span> <span class="mf">0.29</span> <span class="o">||</span> <span class="n">remove_from_cart</span> <span class="o">|</span> <span class="mf">0.15</span> <span class="o">||</span> <span class="n">purchase</span> <span class="o">|</span> <span class="mf">0.07</span> <span class="o">|</span>
-
- <span class="o">-</span> <span class="n">The</span> <span class="n">highest</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">dataset</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">327.78</span>
- <span class="o">-</span> <span class="n">The</span> <span class="n">lowest</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">dataset</span> <span class="ow">is</span><span class="p">:</span> <span class="o">-</span><span class="mf">79.37</span>
- <span class="o">-</span> <span class="n">The</span> <span class="n">non</span><span class="o">-</span><span class="n">positive</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">dataset</span> <span class="n">are</span> <span class="n">product</span> <span class="n">returns</span>
- <span class="o">-</span> <span class="n">The</span> <span class="n">average</span> <span class="n">price</span> <span class="n">of</span> <span class="n">a</span> <span class="n">product</span> <span class="ow">is</span> <span class="mi">8</span> <span class="n">Euros</span>
- <span class="o">-</span> <span class="n">There</span> <span class="n">are</span> <span class="mi">1637977</span> <span class="n">unique</span> <span class="n">Users</span>
- <span class="o">-</span> <span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">purchases</span> <span class="ow">is</span> <span class="mi">1285982</span>
- <span class="o">-</span> <span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">purchases</span> <span class="n">per</span> <span class="n">day</span> <span class="ow">is</span> <span class="mi">8460</span>
- <span class="o">-</span> <span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">purchases</span> <span class="n">per</span> <span class="n">month</span> <span class="ow">is</span> <span class="mi">257196</span>
- <span class="o">-</span> <span class="n">Average</span> <span class="n">number</span> <span class="n">of</span> <span class="n">purchases</span> <span class="n">per</span> <span class="n">user</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">18.94</span>
- <span class="o">-</span> <span class="n">Average</span> <span class="n">event</span> <span class="n">time</span> <span class="n">per</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">minutes</span> <span class="ow">is</span><span class="p">:</span> <span class="mf">29.64</span>
- <span class="o">-</span> <span class="n">The</span> <span class="n">day</span> <span class="n">that</span> <span class="n">most</span> <span class="n">purchases</span> <span class="n">occur</span> <span class="ow">is</span> <span class="n">Sunday</span>
-
-<span class="c1">## Insights</span>
-
-<span class="n">Expensive</span> <span class="n">shipping</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">significant</span> <span class="n">reason</span> <span class="n">why</span> <span class="n">users</span> <span class="n">will</span> <span class="n">remove</span> <span class="n">products</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">cart</span><span class="o">.</span> 
-
-<span class="n">A</span> <span class="n">key</span> <span class="n">would</span> <span class="n">be</span> <span class="n">to</span> <span class="n">analyze</span> <span class="n">why</span> <span class="n">users</span> <span class="n">remove</span> <span class="n">nearly</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cart</span> <span class="n">contents</span> <span class="n">before</span> <span class="n">making</span> <span class="n">a</span> <span class="n">purchase</span><span class="o">.</span> 
-<span class="n">This</span> <span class="n">may</span> <span class="n">indicate</span> <span class="n">that</span> <span class="n">shipping</span> <span class="n">prices</span> <span class="n">are</span> <span class="n">too</span> <span class="n">high</span> <span class="n">versus</span> <span class="n">the</span> <span class="n">total</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">the</span> <span class="n">purchase</span><span class="o">.</span> 
-<span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">a</span> <span class="n">user</span> <span class="n">may</span> <span class="n">find</span> <span class="n">it</span> <span class="n">difficult</span> <span class="n">to</span> <span class="n">justify</span> <span class="n">an</span> <span class="mi">8</span> <span class="n">Euro</span> <span class="n">purchase</span> <span class="k">while</span> <span class="n">having</span> <span class="n">to</span> <span class="n">pay</span> <span class="mi">10</span> 
-<span class="n">additional</span> <span class="n">Euros</span> <span class="k">for</span> <span class="n">shipping</span><span class="o">.</span>
-
-<span class="c1">## Recommendations</span>
-
- <span class="mf">1.</span> <span class="n">Get</span> <span class="n">shipping</span> <span class="n">prices</span><span class="o">.</span>
-<span class="n">Expensive</span> <span class="n">shipping</span> <span class="ow">is</span> <span class="n">another</span> <span class="n">reason</span> <span class="n">users</span> <span class="n">will</span> <span class="n">remove</span> <span class="n">products</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">cart</span><span class="o">.</span> <span class="n">Also</span> <span class="n">get</span> <span class="n">variables</span> 
-<span class="k">for</span> <span class="n">multiple</span> <span class="n">shipping</span> <span class="n">options</span><span class="p">,</span> <span class="k">if</span> <span class="n">available</span><span class="o">.</span> 
-
-<span class="mf">2.</span> <span class="n">Get</span> <span class="n">a</span> <span class="n">complete</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">product</span> <span class="n">names</span> <span class="ow">and</span> <span class="n">categories</span><span class="o">.</span> 
-<span class="n">This</span> <span class="n">dataset</span> <span class="n">identified</span> <span class="n">most</span> <span class="n">only</span> <span class="k">as</span> <span class="n">a</span> <span class="n">reference</span> <span class="n">number</span><span class="o">.</span>
-<span class="mf">3.</span> <span class="n">Get</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">years</span> <span class="n">of</span> <span class="n">data</span><span class="o">.</span> 
-<span class="n">This</span> <span class="n">datasets</span> <span class="n">purchase</span> <span class="n">events</span> <span class="n">are</span> <span class="n">a</span> <span class="n">very</span> <span class="n">small</span> <span class="n">percentage</span> <span class="n">of</span> <span class="n">the</span> <span class="n">dataset</span><span class="o">.</span>
-
-<span class="mf">4.</span> <span class="n">Online</span> <span class="n">user</span> <span class="n">polling</span> <span class="n">may</span> <span class="n">help</span> <span class="n">to</span> <span class="n">reveal</span> <span class="nb">any</span> <span class="n">user</span><span class="o">/</span><span class="n">usage</span> <span class="s1">&#39;pain points&#39;</span><span class="o">.</span>
-</pre></div>
-
-     </div>
 </div>
-</div>
-</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Notes:">Notes:<a class="anchor-link" href="#Notes:">&#182;</a></h1><p>Achieving accuracy of more than 50 percent is improbable in cases where 
+prediction is related to psychology, as we don't know the user's mindset at the time of purchase.
+In some fields, it is entirely expected that an R-squared value would be low. For example, any 
+field that attempts to predict human behavior. That is precisely what we are doing in this analysis.
+Considering this 0.499 is a good fit to the model.</p>
+<p>The coefficient for event_type_level shows that for every single unit increase the Y dependant
+variable (purchase or no purchase) will increase by 22 units.</p>
+<h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><ul>
+<li>The most common price is the 1 - 15 Euro range.    </li>
+<li>The most frequent events are viewing products then putting products into the cart,<br>
+removing a product from the cart and lastly making a purchase.     </li>
+<li>On average each 'event_type' amount drops down to about half the amount of the previous 'event_type'.</li>
+</ul>
+<p><em>Event Type percentages:</em><br>
+| view | 0.49 || cart | 0.29 || remove_from_cart | 0.15 || purchase | 0.07 |</p>
+<ul>
+<li>The highest price in the dataset is: 327.78</li>
+<li>The lowest price in the dataset is: -79.37</li>
+<li>The non-positive values in the dataset are product returns</li>
+<li>The average price of a product is 8 Euros</li>
+<li>There are 1637977 unique Users</li>
+<li>Total number of purchases is 1285982</li>
+<li>Total number of purchases per day is 8460</li>
+<li>Total number of purchases per month is 257196</li>
+<li>Average number of purchases per user is: 18.94</li>
+<li>Average event time per user in minutes is: 29.64</li>
+<li>The day that most purchases occur is Sunday</li>
+</ul>
+<h2 id="Insights">Insights<a class="anchor-link" href="#Insights">&#182;</a></h2><p>Expensive shipping is a significant reason why users will remove products from the cart.</p>
+<p>A key would be to analyze why users remove nearly 1/2 of the cart contents before making a purchase. 
+This may indicate that shipping prices are too high versus the total amount of the purchase. 
+For example, a user may find it difficult to justify an 8 Euro purchase while having to pay 10 
+additional Euros for shipping.</p>
+<h2 id="Recommendations">Recommendations<a class="anchor-link" href="#Recommendations">&#182;</a></h2><ol>
+<li>Get shipping prices.
+Expensive shipping is another reason users will remove products from the cart. Also get variables 
+for multiple shipping options, if available. </li>
+</ol>
+<ol>
+<li>Get a complete list of product names and categories. 
+This dataset identified most only as a reference number.</li>
+<li><p>Get 1 or more years of data. 
+This datasets purchase events are a very small percentage of the dataset.</p>
+</li>
+<li><p>Online user polling may help to reveal any user/usage 'pain points'.</p>
+</li>
+</ol>
 
+</div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
